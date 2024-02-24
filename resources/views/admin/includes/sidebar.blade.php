@@ -5,12 +5,9 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">Главное меню</li>
                 <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
+                    <a href="{{ route('admin.main') }}" class="nav-link">
                         <i class="nav-icon far fa-calendar-alt"></i>
-                        <p>
-                            Календарь
-                            <span class="badge badge-info right">2</span>
-                        </p>
+                        Главная
                     </a>
                 </li>
                 <li class="nav-item">
@@ -33,7 +30,8 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-solid fa-dice-three"></i>
                         <p>
-                            Посты
+                           Посты
+                            <span class="badge badge-info right">2</span>
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>

@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Admin\Main\AdminMainController;
 use App\Http\Controllers\Admin\Category\AdminCategoryController;
+use App\Http\Controllers\Admin\Category\AdminCategoryShowController;
+use App\Http\Controllers\Admin\Category\AdminCategoryStoreController;
 use App\Http\Controllers\Admin\Category\AdminCategoryCreateController;
 
 
@@ -32,10 +34,12 @@ Route::group(['namespace'=>'App\Http\Controllers\Main'],function(){
 
 Route::group(['namespace'=>'App\Http\Controllers\Admin','prefix'=>'admin'],function(){
     Route::group(['namespace'=>'Main'],function(){
-        Route::get('/',AdminMainController::class);
+        Route::get('/',AdminMainController::class)->name('admin.main');
     });
     Route::group(['namespace'=>'Category','prefix'=>'categories'],function(){
         Route::get('/',AdminCategoryController::class)->name('admin.category');
         Route::get('/create',AdminCategoryCreateController::class)->name('admin.category.create');
+        Route::post('/',AdminCategoryStoreController::class)->name('admin.category.store');
+        Route::get('/{category}',AdminCategoryShowController::class)->name('admin.category.show');
     });
 });

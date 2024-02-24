@@ -15,11 +15,54 @@
                             <li class="breadcrumb-item active">Категории</li>
                         </ol>
                     </div><!-- /.col -->
+                    <div class="col-2 pt-5">
+                        <a href="{{ route('admin.category.create') }}" type="button"
+                            class="btn btn-block btn-info">Добавить</a>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Список категорий</h3>
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right"
+                                        placeholder="Search">
 
-                        <div class="col-2 pt-5">
-                            <a href="{{ route('admin.category.create') }}" type="button" class="btn btn-block btn-info">Добавить</a>
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>TITLE</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($categories as $category)
+                                        <tr>
+                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $category->title }}</td>
+                                        <td>{{ $category->created_at }}</td>
+                                        <td><a href="{{ route('admin.category.show',$category->id) }}"><i class="fas fa-solid fa-eye"></a></i></td>
+                                    </tr>
+                                    @endforeach
 
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                    </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
