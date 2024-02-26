@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/kanban.html" class="nav-link">
+                    <a href="{{ route('admin.tags') }}" class="nav-link">
                         <i class="nav-icon fas fa-columns"></i>
                         <p>
                             Теги
@@ -30,16 +30,16 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-solid fa-dice-three"></i>
                         <p>
-                           Посты
+                           Всё о постах
                             <span class="badge badge-info right">2</span>
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/examples/invoice.html" class="nav-link">
+                            <a href="{{ route('admin.post') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Invoice</p>
+                                <p>Посты</p>
                             </a>
                         </li>
                         <li class="nav-item">
