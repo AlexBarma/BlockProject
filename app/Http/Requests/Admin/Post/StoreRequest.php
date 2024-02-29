@@ -16,14 +16,19 @@ class StoreRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
+     * 'category_id'=>'reguired|exists:categories,id', reguired - указывает на обязательное требование далее идет проверка совпадает и выбраннй id с id в таблице категорий
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+    //
+
     public function rules(): array
     {
         return [
             'title'=>'required|string',
             'content'=>'required|string',
+            'preview_image'=>'required|file',
+            'main_image'=>'required|file',
+            'category_id'=>'required|exists:App\Models\Category,id',
         ];
     }
 }

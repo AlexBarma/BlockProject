@@ -26,15 +26,17 @@
                             @error('title')
                                 <div class="text-danger">Это поле необходимо заполнить</div>
                             @enderror
-                            <label class="pt-5">Контент</label>
-                            <input type="text" class="form-control" name="content" placeholder="Название контент"
-                                value="{{ $post->content }}">
-                            @error('content')
-                                <div class="text-danger">Это поле необходимо заполнить</div>
-                            @enderror
-
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Изменить">
+                            <div class="form-group " style="width: 800px;">
+                                <label class="pt-2 d-block">Контент</label>
+                                <textarea id="summernote"  name="content" >{{ $post->content }}</textarea>
+                                @error('content')
+                                    <div class="text-danger">Это поле необходимо заполнить</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Изменить">
+                            </div>
                     </form>
                     <!--Create end form--------------------------->
                 </div><!-- /.row -->
