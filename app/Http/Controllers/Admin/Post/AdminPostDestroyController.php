@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class AdminPostDestroyController extends Controller
+class AdminPostDestroyController extends AdminPostBaseController
 {
     public function __invoke(Post $post)
     {

@@ -54,6 +54,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','prefix'=>'admin'],funct
     Route::group(['namespace'=>'Main'],function(){
         Route::get('/',AdminMainController::class)->name('admin.main');
     });
+    //Create Post
     Route::group(['namespace'=>'Post','prefix'=>'posts'],function(){
         Route::get('/',AdminPostController::class)->name('admin.post');
         Route::get('/create',AdminPostCreateController::class)->name('admin.post.create');
@@ -63,6 +64,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','prefix'=>'admin'],funct
         Route::patch('/{post}',AdminPostUpdateController::class)->name('admin.post.update');
         Route::delete('/{post}',AdminPostDestroyController::class)->name('admin.post.destroy');
     });
+    //Create Category
     Route::group(['namespace'=>'Category','prefix'=>'categories'],function(){
         Route::get('/',AdminCategoryController::class)->name('admin.category');
         Route::get('/create',AdminCategoryCreateController::class)->name('admin.category.create');
@@ -72,6 +74,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','prefix'=>'admin'],funct
         Route::patch('/{category}',AdminCategoryUpdateController::class)->name('admin.category.update');
         Route::delete('/{category}',AdminCategoryDestroyController::class)->name('admin.category.destroy');
     });
+    //Create Tag
     Route::group(['namespace'=>'Tag','prefix'=>'tags'],function(){
         Route::get('/',AdminTagController::class)->name('admin.tags');
         Route::get('/create',AdminTagCreateController::class)->name('admin.tags.create');

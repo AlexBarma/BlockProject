@@ -8,7 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AdminPostEditController extends Controller
+class AdminPostEditController extends AdminPostBaseController
 {
     public function __invoke(Post $post)
     {

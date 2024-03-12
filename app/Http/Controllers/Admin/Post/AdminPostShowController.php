@@ -6,7 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AdminPostShowController extends Controller
+class AdminPostShowController extends AdminPostBaseController
 {
    public function __invoke(Post $post)
    {
