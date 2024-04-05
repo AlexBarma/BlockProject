@@ -24,14 +24,14 @@
                             <input type="text" class="form-control" name="title" placeholder="Название поста"
                                 value="{{ old('title') }}">
                             @error('title')
-                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group " style="width: 800px;">
                             <label class="pt-2 d-block">Контент</label>
                             <textarea id="summernote" name="content">{{ old('content') }}</textarea>
                             @error('content')
-                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group " style="width: 800px;">
@@ -40,15 +40,14 @@
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="main_image">
                                     <label class="custom-file-label">Выберите изображение</label>
-
                                 </div>
-                                <div class="input-group-append">
+                                {{-- <div class="input-group-append">
                                     <span class="input-group-text">Загрузить</span>
-                                </div>
+                                </div> --}}
 
                             </div>
                             @error('main_image')
-                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                             <label for="exampleInputFile">Добавить главное изображение</label>
                             <div class="input-group">
@@ -57,13 +56,13 @@
                                     <label class="custom-file-label">Выберите изображение</label>
 
                                 </div>
-                                <div class="input-group-append">
+                                {{-- <div class="input-group-append">
                                     <span class="input-group-text">Загрузить</span>
-                                </div>
+                                </div> --}}
 
                             </div>
                             @error('preview_image')
-                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">

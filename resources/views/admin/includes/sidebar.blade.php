@@ -27,6 +27,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.users') }}" class="nav-link">
+                        <i class="nav-icon fas fa-solid fa-users"></i>
+                        <p>
+                            Пользователи
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-solid fa-dice-three"></i>
                         <p>
