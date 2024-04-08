@@ -43,6 +43,12 @@
                                             <td>email</td>
                                             <td>{{ $user->email }}</td>
                                         </tr>
+                                        <tr>
+                                            <td>role</td>
+                                            <td>{{ $user->role == 1 ? 'обычный пользователь': 'администратор'}}
+
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

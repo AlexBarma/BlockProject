@@ -38,12 +38,24 @@
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
-                </li>
-            </ul>
+            <div class="col-12 d-flex justify-content-between">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                                class="fas fa-bars"></i></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <input class="btn btn-outline-primary" type="submit" value="Выход">
+                        </form>
+
+                    </li>
+                </ul>
+            </div>
         </nav>
         <!-- /.navbar -->
 
@@ -92,36 +104,36 @@
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
     {{-- summernote --}}
     <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <script>$(document).ready(function() {
-        $('#summernote').summernote({
-  toolbar: [
-    // [groupName, [list of button]]
-    ['style', ['bold', 'italic', 'underline', 'clear']],
-    ['font', ['strikethrough', 'superscript', 'subscript']],
-    ['fontsize', ['fontsize']],
-    ['color', ['color']],
-    ['para', ['ul', 'ol', 'paragraph']],
-    ['height', ['height']]
-  ]
-});
-      });
-
-      </script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ]
+            });
+        });
+    </script>
 
     <script>
-        $(function () {
-          bsCustomFileInput.init();
+        $(function() {
+            bsCustomFileInput.init();
         });
     </script>
     <script>
-        $(function () {
-          //Initialize Select2 Elements
-          $('.select2').select2()
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
         });
     </script>
     <style>
-        .custom-file-input:lang(en)~.custom-file-label::after{
-            content:"Загрузить";
+        .custom-file-input:lang(en)~.custom-file-label::after {
+            content: "Загрузить";
         }
     </style>
 

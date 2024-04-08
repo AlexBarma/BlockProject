@@ -44,7 +44,8 @@
                                             <th>ID</th>
                                             <th>NAME</th>
                                             <th>EMAIL</th>
-                                            <th>Date</th>
+                                            <th>ROLE</th>
+                                            <th>DATE</th>
                                             <th>Action</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -56,6 +57,7 @@
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
+                                                <td>{{ $user->role == 1 ? 'обычный пользователь': 'администратор'}}</td>
                                                 <td>{{ $user->created_at }}</td>
                                                 <td><a href="{{ route('admin.users.show', $user->id) }}"><i
                                                             class="fas fa-solid fa-eye"></i></a></td>
