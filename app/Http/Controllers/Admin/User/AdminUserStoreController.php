@@ -10,17 +10,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\Admin\User\StoreRequest;
+use App\Jobs\StoreUserJob;
 use Illuminate\Auth\Events\Registered;
 
 class AdminUserStoreController extends Controller
 {
     public function __invoke(StoreRequest $request){
-        $data=$request->validated();
-        $password=Str::random(10);
-        $data['password']=Hash::make($password);
-        $user = User::firstOrCreate(['email'=>$data['email']],$data);
-        Mail::to($data['email'])->send(new PasswordMail($password));
-        event(new Registered($user));
+        $data=$request->validated(); //<-------проверка формы
+        StoreUserJob::dispatch($data);//<------метод dispatch реализует работу класса StoreUserJob который запускат очередь с отправкой писем
         return redirect()->route('admin.users');
     }
 
