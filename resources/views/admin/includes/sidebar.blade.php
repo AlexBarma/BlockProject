@@ -20,7 +20,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.tags') }}" class="nav-link">
-                        <i class="nav-icon fas fa-columns"></i>
+                        <i class="nav-icon fas fa-solid fa-tags"></i>
                         <p>
                             Теги
                         </p>
@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-solid fa-dice-three"></i>
+                        <i class="nav-icon fas fa-solid fa-layer-group"></i>
                         <p>
                            Всё о постах
                             <span class="badge badge-info right">2</span>

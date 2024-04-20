@@ -51,9 +51,38 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#"><span class="flag-icon flag-icon-squared rounded-circle flag-icon-gb"></span> Eng</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Download</a>
-                        </li>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ms-auto">
+                                <!-- Authentication Links -->
+                                @guest
+                                    @if (Route::has('login'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('login') }}">Войти</a>
+                                        </li>
+                                    @endif
+
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">Зарегистрироваться</a>
+                                        </li>
+                                    @endif
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <form action="{{ route('logout') }}" method="post">
+                                            @csrf
+                                            <input class="btn btn-outline-primary" type="submit" value="Выход">
+                                        </form>
+                                    </li>
+                                @endguest
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </nav>
