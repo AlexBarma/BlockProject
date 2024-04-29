@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\Post\AdminPostController;
 use App\Http\Controllers\Admin\User\AdminUserController;
 use App\Http\Controllers\Admin\Tag\AdminTagEditController;
 use App\Http\Controllers\Admin\Tag\AdminTagShowController;
+use App\Http\Controllers\Person\Main\PersonMainController;
+use App\Http\Controllers\Person\Post\PersonPostController;
 use App\Http\Controllers\Admin\Tag\AdminTagStoreController;
 use App\Http\Controllers\Admin\Post\AdminPostEditController;
 use App\Http\Controllers\Admin\Post\AdminPostShowController;
@@ -20,13 +22,21 @@ use App\Http\Controllers\Admin\User\AdminUserShowController;
 use App\Http\Controllers\Admin\Post\AdminPostStoreController;
 use App\Http\Controllers\Admin\Tag\AdminTagDestroyController;
 use App\Http\Controllers\Admin\User\AdminUserStoreController;
+use App\Http\Controllers\Person\LikedPost\LikedPostController;
 use App\Http\Controllers\Admin\Post\AdminPostCreateController;
 use App\Http\Controllers\Admin\Post\AdminPostUpdateController;
 use App\Http\Controllers\Admin\User\AdminUserCreateController;
 use App\Http\Controllers\Admin\User\AdminUserUpdateController;
+use App\Http\Controllers\Person\Post\PersonPostEditController;
+use App\Http\Controllers\Person\Post\PersonPostShowController;
 use App\Http\Controllers\Admin\Post\AdminPostDestroyController;
 use App\Http\Controllers\Admin\User\AdminUserDestroyController;
+use App\Http\Controllers\Person\Post\PersonPostStoreController;
 use App\Http\Controllers\Admin\Category\AdminCategoryController;
+use App\Http\Controllers\Person\Post\PersonPostCreateController;
+use App\Http\Controllers\Person\Post\PersonPostUpdateController;
+use App\Http\Controllers\Person\Post\PersonPostDestroyController;
+use App\Http\Controllers\Person\Comment\PersonCommentController;
 use App\Http\Controllers\Admin\Category\AdminCategoryEditController;
 use App\Http\Controllers\Admin\Category\AdminCategoryShowController;
 use App\Http\Controllers\Admin\Category\AdminCategoryStoreController;
@@ -100,5 +110,29 @@ Route::group(['namespace'=>'App\Http\Controllers\Admin','prefix'=>'admin' , 'mid
         Route::get('/{user}/edit',AdminUserEditController::class)->name('admin.users.edit');
         Route::patch('/{user}',AdminUserUpdateController::class)->name('admin.users.update');
         Route::delete('/{user}',AdminUserDestroyController::class)->name('admin.users.destroy');
+    });
+});
+//Admin Person
+Route::group(['namespace'=>'App\Http\Controllers\Person','prefix'=>'person' , 'middleware'=>['auth']],function(){
+    Route::group(['namespace'=>'Main'],function(){
+        Route::get('/',PersonMainController::class)->name('person.main');
+    });
+        //Create Person User Post
+    Route::group(['namespace'=>'Post','prefix'=>'posts'],function(){
+        Route::get('/',PersonPostController::class)->name('person.post');
+        Route::get('/create',PersonPostCreateController::class)->name('person.post.create');
+        Route::post('/',PersonPostStoreController::class)->name('person.post.store');
+        Route::get('/{post}',PersonPostShowController::class)->name('person.post.show');
+        Route::get('/{post}/edit',PersonPostEditController::class)->name('person.post.edit');
+        Route::patch('/{post}',PersonPostUpdateController::class)->name('person.post.update');
+        Route::delete('/{post}',PersonPostDestroyController::class)->name('person.post.destroy');
+    });
+    // Person Category
+    Route::group(['namespace'=>'Comment','prefix'=>'comments'],function(){
+        Route::get('/',PersonCommentController::class)->name('person.comment');
+    });
+    // Liked Posts
+    Route::group(['namespace'=>'LikedPost','prefix'=>'liked_post'],function(){
+        Route::get('/',LikedPostController::class)->name('person.liked_post');
     });
 });
