@@ -67,7 +67,7 @@ Auth::routes(['verify'=> true]);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['namespace'=>'App\Http\Controllers\Main'],function(){
-    Route::get('/',IndexController::class);
+    Route::get('/',IndexController::class)->name('main.index');
 });
 
 //Admin panel
