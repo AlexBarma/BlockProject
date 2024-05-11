@@ -11,7 +11,7 @@ class LikedPostController extends Controller
 {
     public function __invoke()
     {
-        $posts=Post::all();
+        $posts=auth()->user()->likedPosts;
         return view('person.liked_post.index',compact('posts'));
 }
 };

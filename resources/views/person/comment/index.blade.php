@@ -38,21 +38,23 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>TITLE</th>
+                                            <th>MESSAGE</th>
                                             <th>Date</th>
-                                            <th>Action</th>
+                                            <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($categories as $category)
+                                        @foreach ($comments as $comment)
                                             <tr>
-                                                <td>{{ $category->id }}</td>
-                                                <td>{{ $category->title }}</td>
-                                                <td>{{ $category->created_at }}</td>
-                                                <td><a href="#"><i class="fas fa-solid fa-eye"></i></a></td>
+                                                <td>{{ $comment->id }}</td>
+                                                <td>{{ $comment->message }}</td>
+                                                <td>{{ $comment->created_at }}</td>
+                                                <td><a class="text-success"
+                                                    href="{{ route('person.comment.edit', $comment->id) }}"><i
+                                                        class="fas fa-solid fa-wrench"></i></a></td>
                                                 <td>
-                                                    <form action="#"
+                                                    <form action="{{ route('person.comment.destroy', $comment->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('delete')

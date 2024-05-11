@@ -40,7 +40,6 @@
                                             <th>ID</th>
                                             <th>TITLE</th>
                                             <th>CONTENT</th>
-                                            <th>Date</th>
                                             <th>Action</th>
                                             <th>Delete</th>
                                         </tr>
@@ -51,10 +50,9 @@
                                                 <td>{{ $post->id }}</td>
                                                 <td>{{ $post->title }}</td>
                                                 <td>{{ $post->content }}</td>
-                                                <td>{{ $post->created_at }}</td>
                                                 <td><a href="#"><i class="fas fa-solid fa-eye"></i></a></td>
                                                 <td>
-                                                    <form action="#" method="POST">
+                                                    <form action="{{ route('person.liked_post.destroy',$post->id) }}" method="POST">
                                                         @csrf
                                                         @method('delete')
                                                         <button class="border-0 bg-transporent" type="submit">
@@ -64,7 +62,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>

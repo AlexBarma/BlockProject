@@ -22,27 +22,31 @@ use App\Http\Controllers\Admin\User\AdminUserShowController;
 use App\Http\Controllers\Admin\Post\AdminPostStoreController;
 use App\Http\Controllers\Admin\Tag\AdminTagDestroyController;
 use App\Http\Controllers\Admin\User\AdminUserStoreController;
-use App\Http\Controllers\Person\LikedPost\LikedPostController;
 use App\Http\Controllers\Admin\Post\AdminPostCreateController;
 use App\Http\Controllers\Admin\Post\AdminPostUpdateController;
 use App\Http\Controllers\Admin\User\AdminUserCreateController;
 use App\Http\Controllers\Admin\User\AdminUserUpdateController;
+use App\Http\Controllers\Person\LikedPost\LikedPostController;
 use App\Http\Controllers\Person\Post\PersonPostEditController;
 use App\Http\Controllers\Person\Post\PersonPostShowController;
 use App\Http\Controllers\Admin\Post\AdminPostDestroyController;
 use App\Http\Controllers\Admin\User\AdminUserDestroyController;
 use App\Http\Controllers\Person\Post\PersonPostStoreController;
 use App\Http\Controllers\Admin\Category\AdminCategoryController;
+use App\Http\Controllers\Person\Comment\PersonCommentController;
 use App\Http\Controllers\Person\Post\PersonPostCreateController;
 use App\Http\Controllers\Person\Post\PersonPostUpdateController;
 use App\Http\Controllers\Person\Post\PersonPostDestroyController;
-use App\Http\Controllers\Person\Comment\PersonCommentController;
 use App\Http\Controllers\Admin\Category\AdminCategoryEditController;
 use App\Http\Controllers\Admin\Category\AdminCategoryShowController;
+use App\Http\Controllers\Person\Comment\PersonCommentEditController;
 use App\Http\Controllers\Admin\Category\AdminCategoryStoreController;
+use App\Http\Controllers\Person\LikedPost\LikedPostDestroyController;
 use App\Http\Controllers\Admin\Category\AdminCategoryCreateController;
 use App\Http\Controllers\Admin\Category\AdminCategoryUpdateController;
+use App\Http\Controllers\Person\Comment\PersonCommentUpdateController;
 use App\Http\Controllers\Admin\Category\AdminCategoryDestroyController;
+use App\Http\Controllers\Person\Comment\PersonCommentDestroyController;
 
 
 /*
@@ -127,12 +131,16 @@ Route::group(['namespace'=>'App\Http\Controllers\Person','prefix'=>'person' , 'm
         Route::patch('/{post}',PersonPostUpdateController::class)->name('person.post.update');
         Route::delete('/{post}',PersonPostDestroyController::class)->name('person.post.destroy');
     });
-    // Person Category
+    // Person comment
     Route::group(['namespace'=>'Comment','prefix'=>'comments'],function(){
         Route::get('/',PersonCommentController::class)->name('person.comment');
+        Route::get('/{comment}/edit',PersonCommentEditController::class)->name('person.comment.edit');
+        Route::patch('/{comment}',PersonCommentUpdateController::class)->name('person.comment.update');
+        Route::delete('/{comment}',PersonCommentDestroyController::class)->name('person.comment.destroy');
     });
     // Liked Posts
     Route::group(['namespace'=>'LikedPost','prefix'=>'liked_post'],function(){
         Route::get('/',LikedPostController::class)->name('person.liked_post');
+        Route::delete('/{post}',LikedPostDestroyController::class)->name('person.liked_post.destroy');
     });
 });
