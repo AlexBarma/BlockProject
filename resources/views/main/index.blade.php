@@ -12,8 +12,8 @@
                                 <img src="{{ 'storage/' . $post->preview_image }}" alt="blog post">
                             </div>
                             <p class="blog-post-category">{{ $post->title }}</p>
-                            <a href="#!" class="blog-post-permalink">
-                                <h6 class="blog-post-title">{{ $post->content }}</h6>
+                            <a href="{{ route('post.show',$post->id) }}" class="blog-post-permalink">
+                                <h6 class="blog-post-title">{!! $post->content !!}</h6>
                             </a>
                         </div>
                     @endforeach
@@ -27,13 +27,15 @@
                         <div class="row blog-post-row">
                             @foreach ($randomPosts as $post)
                                 <div class="col-md-6 blog-post" data-aos="fade-up">
-                                    <div class="blog-post-thumbnail-wrapper">
-                                        <img src="{{ 'storage/' . $post->preview_image }}" alt="blog post">
-                                    </div>
-                                    <p class="blog-post-category">{{ $post->title }}</p>
-                                    <a href="#!" class="blog-post-permalink">
-                                        <h6 class="blog-post-title">{{ $post->content }}
-                                        </h6>
+                                    <a href="{{ route('post.show',$post->id) }}">
+                                        <div class="blog-post-thumbnail-wrapper">
+                                            <img src="{{ 'storage/' . $post->preview_image }}" alt="blog post">
+                                        </div>
+                                        <p class="blog-post-category">{{ $post->title }}</p>
+                                        <a href="{{ route('post.show',$post->id) }}" class="blog-post-permalink">
+                                            <h6 class="blog-post-title">{!! $post->content !!}
+                                            </h6>
+                                        </a>
                                     </a>
                                 </div>
                             @endforeach
@@ -46,7 +48,7 @@
                         <ul class="post-list">
                             @foreach ($likedPosts as $likePost)
                                 <li class="post">
-                                    <a href="#!" class="post-permalink media">
+                                    <a href="{{ route('post.show', $likePost->id ) }}" class="post-permalink media">
                                         <img src="{{ 'storage/' . $likePost->preview_image }}" alt="blog post">
                                         <div class="media-body">
                                             <h6 class="post-title">{{ $likePost->title }}

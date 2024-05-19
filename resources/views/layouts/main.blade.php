@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edica :: Home</title>
+    <title>BlogProgect</title>
     <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/aos/aos.css') }}">
@@ -30,11 +30,11 @@
                             <a class="nav-link" href="about.html">О нас</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Блок</a>
-                            <div class="dropdown-menu" aria-labelledby="blogDropdown">
+                            <a class="nav-link" href="{{ route('main.index') }}" >Блок</a>
+                            {{-- <div class="dropdown-menu" aria-labelledby="blogDropdown">
                                 <a class="dropdown-item" href="blog.html">Блок архив</a>
                                 <a class="dropdown-item" href="blog-single.html">Посты блога</a>
-                            </div>
+                            </div> --}}
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Страницы</a>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Admin\Tag\AdminTagController;
+use App\Http\Controllers\Main\Post\PostShowController;
 use App\Http\Controllers\Admin\Main\AdminMainController;
 use App\Http\Controllers\Admin\Post\AdminPostController;
 use App\Http\Controllers\Admin\User\AdminUserController;
@@ -44,6 +45,7 @@ use App\Http\Controllers\Admin\Category\AdminCategoryStoreController;
 use App\Http\Controllers\Person\LikedPost\LikedPostDestroyController;
 use App\Http\Controllers\Admin\Category\AdminCategoryCreateController;
 use App\Http\Controllers\Admin\Category\AdminCategoryUpdateController;
+use App\Http\Controllers\Main\Post\Comment\PostCommentStoreController;
 use App\Http\Controllers\Person\Comment\PersonCommentUpdateController;
 use App\Http\Controllers\Admin\Category\AdminCategoryDestroyController;
 use App\Http\Controllers\Person\Comment\PersonCommentDestroyController;
@@ -66,8 +68,17 @@ Auth::routes(['verify'=> true]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+//Home page
 Route::group(['namespace'=>'App\Http\Controllers\Main'],function(){
     Route::get('/',IndexController::class)->name('main.index');
+    //Single post page
+    Route::group(['namespace'=>'Post','prefix'=>'post'],function(){
+        Route::get('/{post}',PostShowController::class)->name('post.show');
+        // post/10/comments (нестед роут)
+        Route::group(['namespace'=>'Comment','prefix'=>'{post}/comments'],function(){ //Вложенная ссылка комментария где мы пользуемся готовым роутом постов для привязки комментария к айдишнику конкретного поста
+            Route::post('/',PostCommentStoreController::class)->name('post.comment.store');
+        });
+    });
 });
 
 //Admin panel
